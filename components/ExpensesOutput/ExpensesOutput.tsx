@@ -3,7 +3,7 @@ import React from 'react'
 
 import ExpensesSummary, { Expense } from './ExpensesSummary'
 import ExpensesList from './ExpensesList'
-import { GlobalStyles } from '../constants/styles'
+import { GlobalStyles } from '../../constants/styles'
 
 const DUMMY_EXPENSES = [
   {
@@ -20,7 +20,7 @@ const DUMMY_EXPENSES = [
   },
   {
     id: 'e3',
-    description: 'some bananas',
+    description: 'Some bananas',
     amount: 4.99,
     date: new Date('2022-02-16')
   },
@@ -32,7 +32,7 @@ const DUMMY_EXPENSES = [
   },
   {
     id: 'e5',
-    description: 'A book',
+    description: 'A magazine',
     amount: 8.99,
     date: new Date('2022-09-01')
   }

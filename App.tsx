@@ -7,6 +7,7 @@ import RecentExpenses from './screens/RecentExpenses';
 import AllExpenses from './screens/AllExpenses';
 import { GlobalStyles } from './constants/styles';
 import { Ionicons } from '@expo/vector-icons';
+import IconButton from './components/UI/IconButton';
 
 export default function App() {
 
@@ -21,6 +22,12 @@ export default function App() {
         headerTintColor: 'white',
         tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
         tabBarActiveTintColor: GlobalStyles.colors.accent500,
+        headerRight: ({tintColor}) => (
+        <IconButton icon='add' size={24} color={tintColor || 'white'} onPress={function (): void {
+          throw new Error('Function not implemented.');
+        } } 
+        />
+        )
       }}
     >
       <BottomTabs.Screen 
