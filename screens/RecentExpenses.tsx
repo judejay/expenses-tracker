@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import ExpensesOutput from '../components/ExpensesOutput'
 
 type PropsRecentExpenses = {}
 
 const RecentExpenses = (props: PropsRecentExpenses) => {
   return (
-    <View>
-      <Text>RecentExpenses</Text>
-    </View>
-  )
+    <ExpensesOutput expenses={[]} expensesPeriod='Last 7 days' />
+  )   
+  
 }
 
 export default RecentExpenses
