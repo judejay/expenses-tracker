@@ -9,26 +9,34 @@ import { GlobalStyles } from './constants/styles';
 import { Ionicons } from '@expo/vector-icons';
 import IconButton from './components/UI/IconButton';
 
-export default function App() {
 
+export type RootStackParamList = {
+ManageExpenses: undefined;
+}
+
+export default function App() {
   const Stack = createNativeStackNavigator();
   const BottomTabs = createBottomTabNavigator();
 
   function ExpensesOverview() {
    return (
     <BottomTabs.Navigator 
-      screenOptions={{
+      screenOptions={({navigation}) =>({
         headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
         headerTintColor: 'white',
         tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
         tabBarActiveTintColor: GlobalStyles.colors.accent500,
         headerRight: ({tintColor}) => (
-        <IconButton icon='add' size={24} color={tintColor || 'white'} onPress={function (): void {
-          throw new Error('Function not implemented.');
+        <IconButton
+         icon='add' 
+         size={24} 
+         color={tintColor || 'white'} 
+         onPress={function (): void {
+          navigation.navigate('ManageExpenses');
         } } 
         />
-        )
-      }}
+        ),
+      })}
     >
       <BottomTabs.Screen 
         name='RecentExpenses' 
