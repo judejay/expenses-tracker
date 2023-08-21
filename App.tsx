@@ -11,7 +11,8 @@ import IconButton from './components/UI/IconButton';
 
 
 export type RootStackParamList = {
-ManageExpenses: undefined;
+[x: string]: any;
+//ManageExpenses: undefined;
 }
 
 export default function App() {
@@ -31,7 +32,7 @@ export default function App() {
          icon='add' 
          size={24} 
          color={tintColor || 'white'} 
-         onPress={function (): void {
+         onPress={ ()=> {
           navigation.navigate('ManageExpenses');
         } } 
         />
@@ -68,12 +69,20 @@ export default function App() {
     <>
       <StatusBar style="auto" />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{
+          headerStyle: {backgroundColor: GlobalStyles.colors.primary500},
+          headerTintColor: 'white'
+        }}>
           <Stack.Screen 
           name='ExpensesOverview' 
           component={ExpensesOverview}
           options={{headerShown: false}}/>
-          <Stack.Screen name='ManageExpenses' component={ManageExpenses} />
+          <Stack.Screen 
+          name='ManageExpenses' 
+          component={ManageExpenses}
+          options={{title: 'Manage Expense'}}
+          
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

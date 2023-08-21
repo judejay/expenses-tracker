@@ -9,15 +9,18 @@ import { RootStackParamList } from '../../App';
 type ExpenseItemProps = {
     amount: number,
     description: string,
-    date: Date
+    date: Date,
+    id: string
 }
 
-const ExpenseItem = ({amount, description, date}: ExpenseItemProps) => {
+const ExpenseItem = ({id, amount, description, date}: ExpenseItemProps) => {
   
   const navigation = useNavigation<RootStackParamList>();
   
   function expensePressHandler() {
-    navigation.navigate('ManageExpenses');
+    navigation.navigate('ManageExpenses', {
+      expenseId: id
+    });
   }
   
   return (
