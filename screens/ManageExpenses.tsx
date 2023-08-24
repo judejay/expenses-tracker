@@ -6,7 +6,7 @@ import IconButton from '../components/UI/IconButton'
 import { GlobalStyles } from '../constants/styles'
 import Button from '../components/UI/Button'
 
-type ManageExpensesProps = NativeStackScreenProps<RootStackParamList, 'MealDetailScreen'>
+type ManageExpensesProps = NativeStackScreenProps<RootStackParamList, 'ManageExpenses'>
 
 const ManageExpenses = ({route, navigation}: ManageExpensesProps) => {
   const editedExpenseId = route.params?.expenseId;
