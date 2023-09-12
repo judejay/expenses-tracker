@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import React, { ReactNode } from 'react'
 import { GlobalStyles } from '../../constants/styles'
 
@@ -6,7 +6,7 @@ type ButtonProps = {
     children: ReactNode,
     onPress: () => {},
     mode: string,
-    style: any
+    style: StyleProp<ViewStyle>;
 
 }
 

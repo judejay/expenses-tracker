@@ -12,13 +12,10 @@ const ManageExpenses = ({route, navigation}: ManageExpensesProps) => {
   const editedExpenseId = route.params?.expenseId;
   const isEditing = !!editedExpenseId;
 
-  useLayoutEffect(() => {
-    
+  useLayoutEffect(() => {    
     navigation.setOptions({
-      title: isEditing? 'Edit Expense' : 'Add Expense'
-    })
-  
-   
+      title: isEditing ? 'Edit Expense' : 'Add Expense'
+    })   
   }, [navigation, isEditing])
 
 
