@@ -2,7 +2,7 @@ import { ReactNode, createContext, useReducer } from "react";
 import { Expense } from "../components/ExpensesOutput/ExpensesSummary";
 
 
-export const DUMMY_EXPENSES = [
+const DUMMY_EXPENSES = [
     {
       id: 'el',
       description: 'A pair of shoes',
@@ -40,7 +40,7 @@ type ExpenseContextType = {
     expenses: Expense[],
     addExpense: ({description, amount, date  }: Expense)  => void,
     deleteExpense: (id: string) => void,
-    updateExpense: (expenseData: Expense) => void
+    updateExpense: (UpdateExpenseData: Partial <Expense>) => void
 };
 
 type ExpenseContextProviderProps = {
@@ -52,16 +52,21 @@ const expensesReducer = (state: Expense[], action: { type: string, payload: any;
     switch (action.type) {
         case 'ADD':
             const id = new Date().toString() + Math.random().toString();
-            return [{ ...action.payload }, ...state]
+            return [{ ...action.payload, id: id }, ...state]
         case 'UPDATE':
-            const updatableExpenseIndex =  state.findIndex((expense: { id: any; }) => expense.id === action.payload.id );
+          console.log('action.payload' ,action.payload)
+
+            const updatableExpenseIndex =  state.findIndex(({ id: any }) => id === action.payload.id );
             const updatableExpense = state[updatableExpenseIndex];
             const updatedItem = { ...updatableExpense, ...action.payload.data }; 
             const updatedExpenses = [...state];
             updatedExpenses[updatableExpenseIndex] = updatedItem;
             return updatedExpenses;
         case 'DELETE':
-            return state.filter((expense: { id: any; }) => expense.id !== action.payload);
+          console.log('action.payload' ,action.payload)
+          const updateState = state.filter((expense: Expense) => expense.id !== action.payload);
+          console.log(updateState);
+            return updateState ;
         default: 
             return state;            
     }
@@ -77,15 +82,15 @@ const ExpenseContextProvider = ({children} : ExpenseContextProviderProps) => {
     }
 
     const deleteExpense = (id: string) =>{
-        dispatch({ type: 'UPDATE', payload: {id: id }});
+        dispatch({ type: 'DELETE', payload: id });
     }
 
-    const updateExpense = ( expenseData : Expense) => {
-      dispatch({ type: 'UPDATE', payload: { data: expenseData } })
+    const updateExpense = ( {id ,description, amount, date}: Partial<Expense>) => {
+      dispatch({ type: 'UPDATE', payload: {id, description, amount, date  }})
     }
 
     const value: ExpenseContextType  ={
-      expenses: DUMMY_EXPENSES,
+      expenses: expensesState,
       addExpense,
       deleteExpense,
       updateExpense

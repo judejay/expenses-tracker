@@ -3,7 +3,7 @@ import React from 'react'
 import { GlobalStyles } from '../../constants/styles'
 
 export type Expense = {
-  id: string,
+  id?: string,
   amount: number,
   description: string,
   date: Date
