@@ -15,7 +15,10 @@ const RecentExpenses = (props: PropsRecentExpenses) => {
     return expenses.date > date7daysAgo;
   });
   return (
-    <ExpensesOutput expenses={recentExpense} expensesPeriod='Last 7 days' />
+    <ExpensesOutput
+     expenses={recentExpense}
+     expensesPeriod='Last 7 days'
+     fallbackText='No expenses for last 7 days'  />
   )   
   
 }

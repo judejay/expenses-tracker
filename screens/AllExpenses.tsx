@@ -8,10 +8,13 @@ type AllExpensesProps = {}
 
 const AllExpenses = (props: AllExpensesProps) => {
   const expensesCtx = useContext(ExpensesContext)
-  return ( <ExpensesOutput expenses={expensesCtx.expenses} expensesPeriod='Total' />
+  return ( <ExpensesOutput
+     expenses={expensesCtx.expenses}
+     expensesPeriod='Total'
+     fallbackText='No expenses registered' />
  
   )
 }
-
+ 
 export default AllExpenses
 
