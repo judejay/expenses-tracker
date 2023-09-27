@@ -6,7 +6,7 @@ import IconButton from '../components/UI/IconButton'
 import { GlobalStyles } from '../constants/styles'
 import Button from '../components/UI/Button'
 import { ExpensesContext } from '../store/expenses-context'
-import InputForm from '../components/ManageExpenses/InputForm'
+import InputForm, { ExpenseData } from '../components/ManageExpenses/InputForm'
 
 type ManageExpensesProps = NativeStackScreenProps<RootStackParamList, 'ManageExpenses'>
 
@@ -57,7 +57,11 @@ const ManageExpenses = ({route, navigation}: ManageExpensesProps) => {
 
   return (
     <View style={styles.container}>
-      <InputForm />
+      <InputForm submitButtonLabel={''} onCancel={function (): void {
+        throw new Error('Function not implemented.')
+      } } onSubmit={function (expenseData: ExpenseData): void {
+        throw new Error('Function not implemented.')
+      } } />
       <View style={styles.buttonsContainer}>
         <Button style={styles.button} mode='flat' onPress={cancelHandler}>Cancel</Button>
         <Button style={styles.button} mode='' onPress={confirmHandler} >{isEditing? 'Update': 'Add'}</Button>

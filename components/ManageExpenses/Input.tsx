@@ -4,26 +4,29 @@ import { GlobalStyles } from '../../constants/styles'
 
 type InputProps = {
     label: string,
-    type: KeyboardTypeOptions,
-    maxLength: number,
-    onChangeText: () => void,
+   // type: KeyboardTypeOptions,
+   // maxLength: number,
+    //onChangeText: () => void,
     placeholder?: string
     multiline?: boolean
-    style?: StyleProp<ViewStyle>;}
+    style?: StyleProp<ViewStyle>;
+    textInputConfig?: any;
+    invalid: boolean;
+
+   // amountChangedHandler: () => void;
+  }
 
 
-const Input = ({style, label, type, maxLength, onChangeText, placeholder, multiline}: InputProps) => {
+
+
+
+const Input = ({invalid, style, label, textInputConfig}: InputProps) => {
  
   return (
     <View style={[styles.inputContainer, style]}>
       <Text style={styles.label}>{label}</Text>
       <TextInput 
-        keyboardType={type}
-        maxLength={maxLength}
-        onChangeText={onChangeText}
-        placeholder={placeholder}
-        multiline={multiline}
-        style={[styles.input, multiline? styles.inputMultiline: null]}
+         style={styles.input} {...textInputConfig}
       />
     </View>
   )
